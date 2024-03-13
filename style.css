@@ -1,0 +1,47 @@
+*{
+    margin: middle;
+    padding: 5px;
+}
+
+h1 {
+    font-family: 'Times New Roman';
+    font-size: 300% ;
+    color: black;
+    text-align: center;
+    
+}
+
+p  {
+  color: red;
+  font-family: courier;
+  font-size: 160%;
+  text-align: center;
+  padding: 10px;
+}
+
+.p1 {
+  
+  color: greenyellow;
+  font-family: 'Times New Roman';
+  font-size: 100%;
+  text-align: left;
+  padding: 10px;
+ 
+}
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+
+}
+
