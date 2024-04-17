@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!--title yaitu judul dari halaman web-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styleregist.css"><!--link ini merujuk ke file eksternal CSS dari Bootstrap-->
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Registrasi</div>
+                    <img src="logo.jpg" alt="logo" width="100" height="100" class="centered-img">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Masukkan username">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm_password">Konfirmasi Password</label>
+                                <input type="password" class="form-control" id="confirm_password"
+                                    placeholder="Konfirmasi password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Daftar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <!--digunakan untuk memuat dan menjalankan kode JavaScript yang terdapat dalam file eksternal script.js-->
+</body>
+</html>
+
