@@ -1,0 +1,61 @@
+ styleregist.css 
+
+      .body {
+          background-color: #f8f9fa;
+      }
+      
+      .card {
+          margin-top: 10px;
+          
+      }
+      
+      .container-mt5 {
+        background-color: aqua;
+      }
+
+      .card-header {
+          background-color: #37066b;
+          color: #fff;
+      }
+      
+
+      .btn-primary {
+          background-color: #37066b;
+          border-color: #37066b;
+      }
+      
+      .btn-primary:hover {
+          background-color: #37066b;
+          border-color: #37066b;
+      }
+
+    body {
+        background-color: #f8f9fa;
+    }
+    .card {
+        margin-top: 100px;
+        border: 1px solid #ced4da;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .card-header {
+        background-color: #007bff;
+        color: #fff;
+        border-bottom: none;
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-control {
+        border-radius: 5px;
+    }
+    .btn-login {
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        padding: 10px 20px;
+    }
