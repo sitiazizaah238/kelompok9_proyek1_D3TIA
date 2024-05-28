@@ -1,19 +1,25 @@
 <?php
 include 'db.php';
 
-$id = $_POST['id'];
-$title = $_POST['title'];
-$description = $_POST['description'];
-$price = $_POST['price'];
-$location = $_POST['location'];
-$image = $_POST['image'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $location = $_POST['location'];
+    $image = $_POST['image'];
 
-$sql = "UPDATE rooms SET title='$title', description='$description', price='$price', location='$location', image='$image' WHERE id='$id'";
+    $query = "UPDATE rooms SET title = ?, description = ?, price = ?, location = ?, image = ? WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('sssssi', $title, $description, $price, $location, $image, $id);
 
-if ($conn->query($sql) === TRUE) {
-    echo json_encode(["status" => "success"]);
-} else {
-    echo json_encode(["status" => "error", "message" => $conn->error]);
+    if ($stmt->execute()) {
+        echo "Room updated successfully";
+    } else {
+        echo "Error updating room: " . $conn->error;
+    }
+
+    $stmt->close();
 }
 
 $conn->close();

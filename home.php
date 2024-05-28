@@ -105,19 +105,17 @@
         </div>
         
     </div>
-
+    <div class="batas"></div> <!--jarak -->
     <div id="room-catalog" class="card-container"></div>
 
+ <div class="batas"></div> <!--jarak -->
 
-
-    <div id="room-catalog" class="card-container"></div>
-
-<div>
-    <h2>Add New Room</h2>
+<div class="tambah-kamar">
+    <h2>Tambahkan kamar</h2>
     <form id="add-room-form">
         <input type="text" id="title" placeholder="nomor kamar" required>
-        <input type="text" id="description" placeholder="deskripsi" required>
-        <input type="text" id="price" placeholder="harga" required>
+        <input type="textarea" id="description" placeholder="deskripsi" required>
+        <input type="number" id="price" placeholder="harga" required>
         <input type="text" id="location" placeholder="lokasi" required>
         <input type="text" id="image" placeholder="tambahkan foto" required>
         <button type="submit">tambahkan kamar</button>
@@ -130,16 +128,16 @@
     <form id="edit-room-form">
         <input type="hidden" id="edit-id">
         <input type="text" id="edit-title" placeholder="ubah nomor kamar" required>
-        <input type="text" id="edit-description" placeholder="edit deskripsi" required>
-        <input type="text" id="edit-price" placeholder="ubah harga" required>
-        <input type="text" id="edit-location" placeholder="ubah lokasi" required>
+        <input type="textarea" id="edit-description" placeholder="edit deskripsi" required>
+        <input type="number" id="edit-price" placeholder="ubah harga" required>
+        <input type="textarea" id="edit-location" placeholder="ubah lokasi" required>
         <input type="text" id="edit-image" placeholder="tambahkan foto" required>
         <button type="submit">simpan</button>
     </form>
 </div>
 
 
-    <script>
+<script>
 async function fetchRooms() {
     const response = await fetch('get_rooms.php');
     const rooms = await response.json();
@@ -170,25 +168,26 @@ async function fetchRooms() {
     });
 
     document.querySelectorAll('.edit-button').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const card = e.target.closest('.card');
-            const id = card.getAttribute('data-id');
-            const title = card.querySelector('.card-title').innerText;
-            const description = card.querySelector('.card-text').innerText;
-            const price = card.querySelector('.list-group-item:nth-child(1)').innerText.split(': ')[1];
-            const location = card.querySelector('.list-group-item:nth-child(2)').innerText.split(': ')[1];
-            const image = card.querySelector('img').src;
+    button.addEventListener('click', (e) => {
+        const card = e.target.closest('.card');
+        const id = card.getAttribute('data-id');
+        const title = card.querySelector('.card-title').innerText;
+        const description = card.querySelector('.card-text').innerText;
+        const price = card.querySelector('.list-group-item:nth-child(1)').innerText.split(': ')[1];
+        const location = card.querySelector('.list-group-item:nth-child(2)').innerText.split(': ')[1];
+        const image = card.querySelector('img').src;
 
-            document.getElementById('edit-id').value = id;
-            document.getElementById('edit-title').value = title;
-            document.getElementById('edit-description').value = description;
-            document.getElementById('edit-price').value = price;
-            document.getElementById('edit-location').value = location;
-            document.getElementById('edit-image').value = image;
+        document.getElementById('edit-id').value = id;
+        document.getElementById('edit-title').value = title;
+        document.getElementById('edit-description').value = description;
+        document.getElementById('edit-price').value = price;
+        document.getElementById('edit-location').value = location;
+        document.getElementById('edit-image').value = image;
 
-            document.getElementById('edit-room-container').style.display = 'block';
-        });
+        document.getElementById('edit-room-container').style.display = 'block';
     });
+});
+
 
     document.querySelectorAll('.delete-button').forEach(button => {
         button.addEventListener('click', async (e) => {
