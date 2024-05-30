@@ -29,7 +29,7 @@
                         padding-right: 35px;
                         color: #e4c6ff;"></i></a>
 
-                    <a href="Register.html"><i class="fa-solid fa-user fa-2xl" style="
+                    <a href="Register.php"><i class="fa-solid fa-user fa-2xl" style="
                     padding-right: 25px; 
                     color: #e4c6ff;       "></i></a>
                 </ul>
@@ -42,7 +42,7 @@
     <!-- content -->
     <div class="background">
         <div class="background-tetap">
-           <img src="awal.jpg" alt="gambar1" height= "100" width="200" > <!-- img untuk menampilkan gambar,src menentukan lokasi/URL dari gambar yg akan ditampilkan -->
+           <img src="gambar1.jpg" alt="gambar1" height= "100" width="200" > <!-- img untuk menampilkan gambar,src menentukan lokasi/URL dari gambar yg akan ditampilkan -->
             <div class="text1">     <!-- class text agar diatas gambar yg dijadikan backgroun -->
                 <h1 class="text-katalog">Kamar Tersedia</h1>   <!-- judul menggunakan elemen header -->
                     <p></p>
@@ -55,7 +55,7 @@
     <div class="card-container">
 
         <div class="card">
-            <img src="pintu.jpg" class="card-img-top" alt="">
+            <img src="gambar5.jpg" class="card-img-top" alt="">
             <div class="card-body">
                 <h5 class="card-title">Kamar 1</h5>
                 <p class="card-text">Luas kamar 3x5 meter dilengkapi dengan fasilitas kamar mandi dalam,kasur,meja,lemari,kipas,wifi</p>
