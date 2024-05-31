@@ -1,19 +1,12 @@
 <?php
 session_start();
 
-// Simpan nilai ke dalam $_SESSION
-$_SESSION['username'] = "contohusername";
-
-// Akses nilai yang disimpan dalam $_SESSION
-$username = $_SESSION['username'];
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Koneksi ke database
     $servername = "localhost";
     $username_db = "root";
     $password_db = "";
-    $dbname = "rental"; // Ganti dengan nama database Anda
+    $dbname = "rental";
 
     $conn = new mysqli($servername, $username_db, $password_db, $dbname);
 
@@ -39,8 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verifikasi password
         if (password_verify($password, $user['password'])) {
             // Password benar, login berhasil
-            echo "Login berhasil! Selamat datang, " . $user['username'];
-            // Anda dapat mengarahkan pengguna ke halaman lain, misalnya:
+            $_SESSION['username'] = $user['username'];
+
+            // waktu sesi pengguna,masa berlaku 1 jam
+            setcookie("username", $user['username'], time() + 3600, "/");
+
+            // Redirect ke halaman home
             header("Location: home.php");
             exit();
         } else {
@@ -57,3 +54,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Invalid request method.";
 }
+?>

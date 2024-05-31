@@ -1,3 +1,34 @@
+<?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include 'db.php';
+
+$username = $_SESSION['username'];
+
+
+$sql = "SELECT username FROM pemilik WHERE username = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+    $display_username = $user['username'];
+} else {
+    $display_username = "User not found"; // Handle case where user data is not found
+}
+
+$stmt->close();
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,37 +43,36 @@
 </head>
 
     <!-- navigasi -->
-<body>
+    <body>
     <header>
         <nav>
             <div class="container">
                 <div class="logo">
                     <img src="logoo.png"/>
                 </div>
-                
                 <form class="search-box" action="#" method="GET">
-                    <input type="text" name="search" placeholder="                                                          Search">
+                    <input type="text" name="search" placeholder="Search">
                 </form>
-
                 <ul class="nav-icons">
-                    <a href="#"><i class="fa-regular fa-heart fa-2xl" style="
-                        padding-right: 35px;
-                        color: #e4c6ff;"></i></a>
-
-                    <a href="Register.php"><i class="fa-solid fa-user fa-2xl" style="
-                    padding-right: 25px; 
-                    color: #e4c6ff;       "></i></a>
+                    <a href="#"><i class="fa-regular fa-heart fa-2xl" style="padding-right: 35px; color: #e4c6ff;"></i></a>
+                    <a href="Register.php"><i class="fa-solid fa-user fa-2xl" style="padding-right: 25px; color: #e4c6ff;"></i></a>
                 </ul>
-
             </div>
         </nav>
     </header>
+    <div class="container">
+        <h2>selamat datang, <?php echo htmlspecialchars($display_username); ?>  </h2>
+        <!-- Display other content as needed -->
+        <a href="logout.php">Logout</a>
+    </div>
+
+</body>
  <!-- akhir navigasi -->
 
     <!-- content -->
     <div class="background">
         <div class="background-tetap">
-           <img src="gambar1.jpg" alt="gambar1" height= "100" width="200" > <!-- img untuk menampilkan gambar,src menentukan lokasi/URL dari gambar yg akan ditampilkan -->
+           <img src="awal.png" alt="gambar1" height= "100" width="200" > <!-- img untuk menampilkan gambar,src menentukan lokasi/URL dari gambar yg akan ditampilkan -->
             <div class="text1">     <!-- class text agar diatas gambar yg dijadikan backgroun -->
                 <h1 class="text-katalog">Kamar Tersedia</h1>   <!-- judul menggunakan elemen header -->
                     <p></p>
