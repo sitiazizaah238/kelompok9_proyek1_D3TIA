@@ -1,34 +1,3 @@
-<?php
-session_start();
-
-// Check if user is logged in
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
-
-include 'db.php';
-
-$username = $_SESSION['username'];
-
-
-$sql = "SELECT username FROM pemilik WHERE username = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
-    $display_username = $user['username'];
-} else {
-    $display_username = "User not found"; // Handle case where user data is not found
-}
-
-$stmt->close();
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,13 +6,10 @@ $conn->close();
     <title>Landing Page</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/4592f70558.js" crossorigin="anonymous"></script>
-    <!-- Youu can add any additional stylesheets or scripts here -->
-
-
+    <!-- You can add any additional stylesheets or scripts here -->
 </head>
 
-    <!-- navigasi -->
-    <body>
+<body>
     <header>
         <nav>
             <div class="container">
@@ -55,24 +21,15 @@ $conn->close();
                 </form>
                 <ul class="nav-icons">
                     <a href="#"><i class="fa-regular fa-heart fa-2xl" style="padding-right: 35px; color: #e4c6ff;"></i></a>
-                    <a href="Register.php"><i class="fa-solid fa-user fa-2xl" style="padding-right: 25px; color: #e4c6ff;"></i></a>
+                    <a href="login.php"><i class="fa-solid fa-user fa-2xl" style="padding-right: 25px; color: #e4c6ff;"></i></a>
                 </ul>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <h2>selamat datang, <?php echo htmlspecialchars($display_username); ?>  </h2>
-        <!-- Display other content as needed -->
-        <a href="logout.php">Logout</a>
-    </div>
 
-</body>
- <!-- akhir navigasi -->
-
-    <!-- content -->
     <div class="background">
         <div class="background-tetap">
-           <img src="awal.png" alt="gambar1" height= "100" width="200" > <!-- img untuk menampilkan gambar,src menentukan lokasi/URL dari gambar yg akan ditampilkan -->
+            <img src="awal.png" alt="gambar1" height= "100" width="200" > <!-- img untuk menampilkan gambar,src menentukan lokasi/URL dari gambar yg akan ditampilkan -->
             <div class="text1">     <!-- class text agar diatas gambar yg dijadikan backgroun -->
                 <h1 class="text-katalog">Kamar Tersedia</h1>   <!-- judul menggunakan elemen header -->
                     <p></p>
@@ -80,215 +37,142 @@ $conn->close();
         </div> 
     </div>
 
-
-    <!-- katalog  -->
-    <div class="card-container">
-
-        <div class="card">
-            <img src="gambar5.jpg" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Kamar 1</h5>
-                <p class="card-text">Luas kamar 3x5 meter dilengkapi dengan fasilitas kamar mandi dalam,kasur,meja,lemari,kipas,wifi</p>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Price:</strong> Rp.500,000/Bulan</li>
-                    <li class="list-group-item"><strong>Lokasi:</strong> Jl.Lohbener Lama</li>
-                </ul>
-                <div class="tombol">
-                    <a href="payment.html" class="button-text">Sewa</a>
-                </div>
-    
-            </div>
-        </div>
-        
-
-        <div class="card">
-            <img src="gambar6.jpeg" class="card-img-top" alt="">
-            <div class="card-body">     <!-- Body deskripsi -->
-                <h5 class="card-title">Kamar 2</h5>
-                <p class="card-text">Luas kamar 3x5 meter dilengkapi dengan fasilitas kamar mandi dalam,kasur,meja,lemari,kipas,wifi</p>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Price:</strong> Rp.500,000/Bulan</li>
-                    <li class="list-group-item"><strong>Lokasi:</strong> Jl.Lohbener Lama</li>
-                </ul>
-                <div class="tombol">
-                    <a href="payment.html" class="button-text">Sewa</a>
-                </div>
-    
-            </div>
-        </div>
-    
-
-        <div class="card">
-            <img src="gambar7.jpeg" class="card-img-top" alt="">
-            <div class="card-body">
-                <h5 class="card-title">Kamar 3</h5>
-                <p class="card-text">Luas kamar 3x5 meter dilengkapi dengan fasilitas kamar mandi dalam,kasur,meja,lemari,kipas,wifi</p>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Price:</strong> Rp.500,000/Bulan</li>
-                    <li class="list-group-item"><strong>Lokasi:</strong> Jl.Lohbener Lama</li>
-                </ul>
-                <div class="tombol">
-                    <a href="payment.html" class="button-text">Sewa</a>
-                </div>
-    
-            </div>
-        </div>
-        
-    </div>
-    <div class="batas"></div> <!--jarak -->
     <div id="room-catalog" class="card-container"></div>
 
- <div class="batas"></div> <!--jarak -->
+    <div class="batas"></div> <!--jarak -->
 
-<div class="tambah-kamar">
-    <h2>Tambahkan kamar</h2>
-    <form id="add-room-form">
-        <input type="text" id="title" placeholder="nomor kamar" required>
-        <input type="textarea" id="description" placeholder="deskripsi" required>
-        <input type="number" id="price" placeholder="harga" required>
-        <input type="text" id="location" placeholder="lokasi" required>
-        <input type="text" id="image" placeholder="tambahkan foto" required>
-        <button type="submit">tambahkan kamar</button>
-    </form>
-</div>
+    <div class="tambah-kamar">
+        <form id="add-room-form">
+           
+        </form>
+    </div>
 
-<!-- Modal for editing room -->
-<div id="edit-room-container" style="display:none;">
-    <h2>Edit Room</h2>
-    <form id="edit-room-form">
-        <input type="hidden" id="edit-id">
-        <input type="text" id="edit-title" placeholder="ubah nomor kamar" required>
-        <input type="textarea" id="edit-description" placeholder="edit deskripsi" required>
-        <input type="number" id="edit-price" placeholder="ubah harga" required>
-        <input type="textarea" id="edit-location" placeholder="ubah lokasi" required>
-        <input type="text" id="edit-image" placeholder="tambahkan foto" required>
-        <button type="submit">simpan</button>
-    </form>
-</div>
+    <!-- Modal for editing room -->
+    <div id="edit-room-container" style="display:none;">
+        <form id="edit-room-form">
 
+        </form>
+    </div>
 
-<script>
-async function fetchRooms() {
-    const response = await fetch('get_rooms.php');
-    const rooms = await response.json();
-    const roomCatalog = document.getElementById('room-catalog');
-    roomCatalog.innerHTML = '';
-    rooms.forEach(room => {
-        const roomCard = `
-            <div class="card" data-id="${room.id}">
-                <img src="${room.image}" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">${room.title}</h5>
-                    <p class="card-text">${room.description}</p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Price:</strong> ${room.price}</li>
-                        <li class="list-group-item"><strong>Location:</strong> ${room.location}</li>
-                    </ul>
-                    <div>
-                    <button class="edit-button">Edit</button>
-                    <button class="delete-button">Delete</button>
+    <script>
+        async function fetchRooms() {
+            const response = await fetch('get_rooms.php');
+            const rooms = await response.json();
+            const roomCatalog = document.getElementById('room-catalog');
+            roomCatalog.innerHTML = '';
+            rooms.forEach(room => {
+                const roomCard = `
+                    <div class="card" data-id="${room.id}">
+                        <img src="${room.foto}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">${room.no_kamar}</h5>
+                            <p class="card-text">${room.deskripsi}</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Harga:</strong> ${room.harga}</li>
+                                <li class="list-group-item"><strong>Lokasi:</strong> ${room.lokasi}</li>
+                            </ul>
+                            <div>
+                               
+                            </div>
+                            <div class="tombol">
+                                <a href="payment.html" class="button-text">Sewa</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tombol">
-                        <a href="payment.html" class="button-text">Sewa</a>
-                    </div>
-                </div>
-            </div>
-        `;
-        roomCatalog.innerHTML += roomCard;
-    });
+                `;
+                roomCatalog.innerHTML += roomCard;
+            });
 
-    document.querySelectorAll('.edit-button').forEach(button => {
-    button.addEventListener('click', (e) => {
-        const card = e.target.closest('.card');
-        const id = card.getAttribute('data-id');
-        const title = card.querySelector('.card-title').innerText;
-        const description = card.querySelector('.card-text').innerText;
-        const price = card.querySelector('.list-group-item:nth-child(1)').innerText.split(': ')[1];
-        const location = card.querySelector('.list-group-item:nth-child(2)').innerText.split(': ')[1];
-        const image = card.querySelector('img').src;
+            document.querySelectorAll('.edit-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const card = e.target.closest('.card');
+                    const id = card.getAttribute('data-id');
+                    const no_kamar = card.querySelector('.card-title').innerText;
+                    const deskripsi = card.querySelector('.card-text').innerText;
+                    const harga = card.querySelector('.list-group-item:nth-child(1)').innerText.split(': ')[1];
+                    const lokasi = card.querySelector('.list-group-item:nth-child(2)').innerText.split(': ')[1];
+                    const foto = card.querySelector('img').src;
 
-        document.getElementById('edit-id').value = id;
-        document.getElementById('edit-title').value = title;
-        document.getElementById('edit-description').value = description;
-        document.getElementById('edit-price').value = price;
-        document.getElementById('edit-location').value = location;
-        document.getElementById('edit-image').value = image;
+                    document.getElementById('edit-id_kamar').value = id;
+                    document.getElementById('edit-no_kamar').value = no_kamar;
+                    document.getElementById('edit-deskripsi').value = deskripsi;
+                    document.getElementById('edit-harga').value = harga;
+                    document.getElementById('edit-lokasi').value = lokasi;
+                    document.getElementById('edit-foto').value = foto;
 
-        document.getElementById('edit-room-container').style.display = 'block';
-    });
-});
+                    document.getElementById('edit-room-container').style.display = 'block';
+                });
+            });
 
+            document.querySelectorAll('.delete-button').forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    const card = e.target.closest('.card');
+                    const id_kamar = card.getAttribute('data-id');
 
-    document.querySelectorAll('.delete-button').forEach(button => {
-        button.addEventListener('click', async (e) => {
-            const card = e.target.closest('.card');
-            const id = card.getAttribute('data-id');
+                    const formData = new FormData();
+                    formData.append('id_kamar', id_kamar);
+
+                    await fetch('delete_room.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    fetchRooms();
+                });
+            });
+        }
+
+        document.getElementById('add-room-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const no_kamar = document.getElementById('no_kamar').value;
+            const deskripsi = document.getElementById('deskripsi').value;
+            const harga = document.getElementById('harga').value;
+            const lokasi = document.getElementById('lokasi').value;
+            const foto = document.getElementById('foto').value;
 
             const formData = new FormData();
-            formData.append('id', id);
+            formData.append('no_kamar', no_kamar);
+            formData.append('deskripsi', deskripsi);
+            formData.append('harga', harga);
+            formData.append('lokasi', lokasi);
+            formData.append('foto', foto);
 
-            await fetch('delete_room.php', {
+            await fetch('add_room.php', {
                 method: 'POST',
                 body: formData
             });
 
             fetchRooms();
         });
-    });
-}
 
-document.getElementById('add-room-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
-    const price = document.getElementById('price').value;
-    const location = document.getElementById('location').value;
-    const image = document.getElementById('image').value;
+        document.getElementById('edit-room-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id_kamar = document.getElementById('edit-id_kamar').value;
+            const no_kamar = document.getElementById('edit-no_kamar').value;
+            const deskripsi = document.getElementById('edit-deskripsi').value;
+            const harga = document.getElementById('edit-harga').value;
+            const lokasi = document.getElementById('edit-lokasi').value;
+            const foto = document.getElementById('edit-foto').value;
 
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('price', price);
-    formData.append('location', location);
-    formData.append('image', image);
+            const formData = new FormData();
+            formData.append('id_kamar', id_kamar);
+            formData.append('no_kamar', no_kamar);
+            formData.append('deskripsi', deskripsi);
+            formData.append('harga', harga);
+            formData.append('lokasi', lokasi);
+            formData.append('foto', foto);
 
-    await fetch('add_room.php', {
-        method: 'POST',
-        body: formData
-    });
+            await fetch('update_room.php', {
+                method: 'POST',
+                body: formData
+            });
 
-    fetchRooms();
-});
+            document.getElementById('edit-room-container').style.display = 'none';
+            fetchRooms();
+        });
 
-document.getElementById('edit-room-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const id = document.getElementById('edit-id').value;
-    const title = document.getElementById('edit-title').value;
-    const description = document.getElementById('edit-description').value;
-    const price = document.getElementById('edit-price').value;
-    const location = document.getElementById('edit-location').value;
-    const image = document.getElementById('edit-image').value;
-
-    const formData = new FormData();
-    formData.append('id', id);
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('price', price);
-    formData.append('location', location);
-    formData.append('image', image);
-
-    await fetch('update_room.php', {
-        method: 'POST',
-        body: formData
-    });
-
-    document.getElementById('edit-room-container').style.display = 'none';
-    fetchRooms();
-});
-
-window.onload = fetchRooms;
-
-</script>    
+        window.onload = fetchRooms;
+    </script>
     
 
 

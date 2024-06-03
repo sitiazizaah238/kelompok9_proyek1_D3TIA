@@ -1,16 +1,16 @@
 <?php
 include 'db.php';
 
-$sql = "SELECT * FROM rooms";
+$sql = "SELECT id_kamar, no_kamar, deskripsi, harga, lokasi, foto FROM kamar";
 $result = $conn->query($sql);
 
-$rooms = array();
+$kamar = array();
 
 while($row = $result->fetch_assoc()) {
-    $rooms[] = $row;
+    $kamar[] = $row;
 }
 
-echo json_encode($rooms);
+echo json_encode($kamar);
 
 $conn->close();
 ?>

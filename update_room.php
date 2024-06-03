@@ -2,17 +2,19 @@
 include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $price = $_POST['price'];
-    $location = $_POST['location'];
-    $image = $_POST['image'];
+    $id_kamar = $_POST['id_kamar'];
+    $no_kamar = $_POST['no_kamar'];
+    $deskripsi = $_POST['deskripsi'];
+    $harga = $_POST['harga'];
+    $lokasi = $_POST['lokasi'];
+    $foto = $_POST['foto'];
 
-    $query = "UPDATE rooms SET title = ?, description = ?, price = ?, location = ?, image = ? WHERE id = ?";
+    // Query untuk melakukan update data kamar berdasarkan id_kamar
+    $query = "UPDATE kamar SET no_kamar = ?, deskripsi = ?, harga = ?, lokasi = ?, foto = ? WHERE id_kamar = ?";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('sssssi', $title, $description, $price, $location, $image, $id);
+    $stmt->bind_param('sssssi', $no_kamar, $deskripsi, $harga, $lokasi, $foto, $id_kamar);
 
+    // Mengeksekusi query
     if ($stmt->execute()) {
         echo "Room updated successfully";
     } else {

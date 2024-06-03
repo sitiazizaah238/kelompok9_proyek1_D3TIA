@@ -37,7 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $username, $no_hp, $email, $hashed_password);
 
     if ($stmt->execute()) {
-        echo "Registrasi berhasil!";
+        // Dapatkan id_pemilik yang baru dimasukkan
+        $id_pemilik = $stmt->insert_id;
+        echo "Registrasi berhasil! ID Anda adalah: " . $id_pemilik;
         header("Location: login.php");
         exit();
     } else {

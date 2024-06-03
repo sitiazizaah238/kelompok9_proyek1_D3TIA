@@ -1,50 +1,55 @@
-<?php
-include 'db.php';
-
-$query = "SELECT * FROM rooms";
-$result = mysqli_query($conn, $query);
-?>
-
+<?php include 'db.php' ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Simple CRUD Using PHP, MySQL and Bootstrap</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Membuat Laporan PDF Dengan PHP dan MySQLi</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <h2>Data katalog kamar</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Location</th>
-                <th>Image</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php 
-        if ($result->num_rows > 0):
-            $nomor = 1;
-            while($data = mysqli_fetch_assoc($result)): ?>
-            <tr>
-                <td><?php echo $nomor++; ?></td>
-                <td><?php echo $data['title']; ?></td>
-                <td><?php echo $data['description']; ?></td>
-                <td><?php echo $data['price']; ?></td>
-                <td><?php echo $data['location']; ?></td>
-                <td><img src="<?php echo $data['image']; ?>" alt="Room Image" width="100"></td>
-            </tr>
-            <?php endwhile; ?>
-        <?php else: ?>
-            <tr>
-                <td colspan="6" rowspan="1" headers="">No data found!</td>
-            </tr>
-        <?php endif; ?>
-        <?php mysqli_free_result($result); ?>
-        </tbody>
-    </table>
+<div class="container">
+<center><h2>Membuat Laporan PDF Dengan PHP dan MySQLi</h2></center>
+<br>
+<div class="float-right">
+<a href="print_data.php" target="_blank" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp PRINT</a>
+<br>
+<br>
+</div>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th style="text-align: center;">No</th>
+<th style="text-align: center;">ID</th>
+<th style="text-align: center;">Nama</th>
+<th style="text-align: center;">Deskripsi</th>
+<th style="text-align: center;">Harga</th>
+<th style="text-align: center;">Lokasi</th>
+<th style="text-align: center;">Foto</th>
+</tr>
+</thead>
+<tbody>
+<?php
+$no = 1;
+$data = mysqli_query($conn, "SELECT * FROM kamar");
+while ($d = mysqli_fetch_array($data)) {
+?>
+<tr>
+<td><?php echo $no++; ?></td>
+<td><?php echo $d['id_kamar']; ?></td>
+<td><?php echo $d['no_kamar']; ?></td>
+<td><?php echo $d['deskripsi']; ?></td>
+<td><?php echo $d['harga']; ?></td>
+<td><?php echo $d['lokasi']; ?></td>
+<td><?php echo $d['foto']; ?></td>
+</tr>
+<?php
+}
+?>
+</tbody>
+</table>
+</div>
 </body>
 </html>

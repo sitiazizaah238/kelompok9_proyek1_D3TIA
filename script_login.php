@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             setcookie("username", $user['username'], time() + 3600, "/");
 
             // Redirect ke halaman home
-            header("Location: home.php");
+            header("Location: home_pemilik.php");
             exit();
         } else {
             // Password salah

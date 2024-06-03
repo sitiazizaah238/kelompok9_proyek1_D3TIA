@@ -1,9 +1,9 @@
 <?php
 include 'db.php';
 
-$id = $_POST['id'];
+$id_kamar = $_POST['id_kamar']; // Sesuaikan dengan nama variabel yang dikirimkan dari JavaScript
 
-$sql = "DELETE FROM rooms WHERE id='$id'";
+$sql = "DELETE FROM kamar WHERE id_kamar='$id_kamar'"; // Sesuaikan dengan nama kolom pada tabel kamar
 
 if ($conn->query($sql) === TRUE) {
     echo "Room deleted successfully";
@@ -13,5 +13,3 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 ?>
-
-
