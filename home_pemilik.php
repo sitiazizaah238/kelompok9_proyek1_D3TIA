@@ -50,8 +50,8 @@ $conn->close();
                 <div class="logo">
                     <img src="logoo.png"/>
                 </div>
-                <form class="search-box" action="#" method="GET">
-                    <input type="text" name="search" placeholder="Search">
+                <!-- <form class="search-box" action="#" method="GET">
+                    <input type="text" name="search" placeholder="Search"> -->
                 </form>
                 <ul class="nav-icons">
                     <a href="#"><i class="fa-regular fa-heart fa-2xl" style="padding-right: 35px; color: #e4c6ff;"></i></a>
@@ -125,32 +125,35 @@ $conn->close();
 
 <script>
 // Function to fetch and display rooms
-async function fetchRooms() {
+    async function fetchRooms() {
     const response = await fetch('get_rooms.php');
     const rooms = await response.json();
     const roomCatalog = document.getElementById('room-catalog');
     roomCatalog.innerHTML = '';
     rooms.forEach(room => {
         const roomCard = `
-            <div class="card" data-id="${room.id_kamar}">
-                <img src="${room.foto}" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">${room.no_kamar}</h5>
-                    <p class="card-text">${room.deskripsi}</p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Harga:</strong> ${room.harga}</li>
-                        <li class="list-group-item"><strong>Lokasi:</strong> ${room.lokasi}</li>
-                    </ul>
-                    <div>
+    <div class="card" data-id="${room.id_kamar}">
+        <a href="info_kamar.php?id_kamar=${room.id_kamar}&no_kamar=${encodeURIComponent(room.no_kamar)}&deskripsi=${encodeURIComponent(room.deskripsi)}&harga=${room.harga}&lokasi=${encodeURIComponent(room.lokasi)}&foto=${encodeURIComponent(room.foto)}">
+            <img src="${room.foto}" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">${room.no_kamar}</h5>
+                <p class="card-text">${room.deskripsi}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Harga:</strong> ${room.harga}</li>
+                    <li class="list-group-item"><strong>Lokasi:</strong> ${room.lokasi}</li>
+                </ul>
+                <div>
                     <button class="edit-button">Edit</button>
                     <button class="delete-button">Delete</button>
                     </div>
-                    <div class="tombol">
-                        <a href="payment.html" class="button-text">Sewa</a>
-                    </div>
+                <div class="tombol">
+                    <a href="payment.php?id_kamar=${room.id_kamar}&no_kamar=${encodeURIComponent(room.no_kamar)}&deskripsi=${encodeURIComponent(room.deskripsi)}&harga=${room.harga}&lokasi=${encodeURIComponent(room.lokasi)}&foto=${encodeURIComponent(room.foto)}" class="button-text">Sewa</a>
                 </div>
             </div>
-        `;
+        </a>
+    </div>
+    `;
+
         roomCatalog.innerHTML += roomCard;
     });
 

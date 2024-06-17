@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sewa Kost</title>
-    <style>
+<style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -86,46 +80,3 @@
             background-color: #45a049;
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <div class="card">
-            <img src="gambar5.jpg" class="card-img-top" alt="" style="width: 100%; height: 270px;">
-            <div class="card-body">
-                <h5 class="card-title">Kamar 1</h5>
-                <p class="card-text">Luas kamar 3x5 meter dilengkapi dengan fasilitas:kamar mandi dalam,meja,kasur,bantal,kipas, wifi</p>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Harga:</strong> Rp.500,000/Bulan</li>
-                    <li class="list-group-item"><strong>Lokasi:</strong> Jl.Lohbener Lama</li>
-                </ul>
-          
-            </div>
-        </div>
-
-        <form id="rentForm">
-            <h2>Sewa Sekarang</h2>
-            <label for="rentDuration">Durasi Sewa (bulan):</label>
-            <input type="number" id="rentDuration" name="rentDuration" required>
-
-            <label for="totalAmount">Total Harga (Rp):</label>
-            <input type="text" id="totalAmount" name="totalAmount" readonly>
-            <input type="submit" value="bayar"  style="padding-left: -10px":>
-          
-        </form>
-    </div>
-
-    <script>
-        document.getElementById('rentForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            calculateTotal();
-        });
-
-        function calculateTotal() {
-            var rentDuration = parseInt(document.getElementById('rentDuration').value);
-            var totalAmount = 400000 * rentDuration; // Harga tetap per bulan adalah 400 ribu
-
-            document.getElementById('totalAmount').value = totalAmount.toLocaleString('id-ID'); // Format harga sebagai mata uang Indonesia
-        }
-    </script>
-</body>
-</html>

@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Langkah 5: Masukkan data ke database menggunakan prepared statements
-    $sql = "INSERT INTO pemilik (username, no_hp, email, password) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO penyewa (username, no_hp, email, password) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
         die("Error: " . $conn->error);
