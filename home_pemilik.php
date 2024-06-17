@@ -124,6 +124,8 @@ $conn->close();
 
 
 <script>
+
+    
 // Function to fetch and display rooms
     async function fetchRooms() {
     const response = await fetch('get_rooms.php');
@@ -246,6 +248,8 @@ document.getElementById('edit-room-form').addEventListener('submit', async (e) =
 });
 
 window.onload = fetchRooms;
+
+
 </script>    
     
 

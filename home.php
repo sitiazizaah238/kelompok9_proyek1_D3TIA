@@ -173,6 +173,8 @@
         });
 
         window.onload = fetchRooms;
+
+        
     </script>
     
 
