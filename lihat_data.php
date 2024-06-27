@@ -43,7 +43,7 @@ while ($d = mysqli_fetch_array($data)) {
 <td><?php echo $d['deskripsi']; ?></td>
 <td><?php echo $d['harga']; ?></td>
 <td><?php echo $d['lokasi']; ?></td>
-<td><?php echo $d['foto']; ?></td>
+<td><img src="<?php echo $d['foto']; ?>" alt="" width="150"></td>
 </tr>
 <?php
 }

@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $user['username'];
 
             // waktu sesi pengguna, masa berlaku 1 jam
-            setcookie("username", $user['username'], time() + 3600, "/");
+            setcookie("username", $user['username'], time() + 3000, "/");
 
             header("Location: home_pemilik.php");
             exit();
@@ -60,8 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['id_penyewa'] = $user['id_penyewa']; // Tambahkan ini
 
-                // waktu sesi pengguna, masa berlaku 1 jam
-                setcookie("username", $user['username'], time() + 3600, "/");
+                // waktu sesi pengguna
+                setcookie("username", $user['username'], time() + 3000, "/");
 
                 // Redirect ke halaman home_penyewa.php
                 header("Location: home_penyewa.php");

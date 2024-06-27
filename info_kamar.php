@@ -1,14 +1,73 @@
 <?php
 session_start();
 
+// Periksa apakah pengguna telah login
+if (!isset($_SESSION['username'])) {
+    // Tambahkan pesan notifikasi ke session
+    $_SESSION['login_message'] = "Silahkan login terlebih dahulu.";
+    header("Location: login.php");
+    exit();
+}
+
+// Include file koneksi database
+require_once 'db.php';
+
+// Inisialisasi variabel
+$nama_kamar = "";
+$deskripsi = "";
+$lokasi = "";
+$harga = "";
+$foto = "";
+$foto2 = "";
+$foto3 = "";
+
+if (isset($_GET['id_penyewa'])) {
+    $id_penyewa = $_GET['id_penyewa'];
+
+    // Query untuk mengambil data kamar berdasarkan id_kamar
+    $sql = "SELECT * FROM penyewa WHERE id_penyewa = $id_penyewa";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Output data dari setiap baris
+        while ($row = $result->fetch_assoc()) {
+            $id_penyewa = $row['id_penyewa'];
+
+        }
+    } else {
+        echo "Data kamar tidak ditemukan.";
+    }
+}
 
 
+// Query untuk mengambil data kamar jika parameter id_kamar ada
+if (isset($_GET['id_kamar'])) {
+    $id_kamar = $_GET['id_kamar'];
 
+    // Query untuk mengambil data kamar berdasarkan id_kamar
+    $sql = "SELECT * FROM kamar WHERE id_kamar = $id_kamar";
+    $result = $conn->query($sql);
 
-
-
-
-
+    if ($result->num_rows > 0) {
+        // Output data dari setiap baris
+        while ($row = $result->fetch_assoc()) {
+            $id_kamar = $row['id_kamar'];
+            $no_kamar = $row['no_kamar'];
+            $deskripsi = $row['deskripsi'];
+            $lokasi = $row['lokasi'];
+            $harga = $row['harga'];
+            $foto = $row['foto'];
+            $foto2 = $row['foto2'];
+            $foto3 = $row['foto3'];
+        }
+    } else {
+        echo "Data kamar tidak ditemukan.";
+    }
+} else {
+    $_SESSION['login_message'] = "Silahkan login terlebih dahulu.";
+    header("Location: login.php");
+    exit();;
+}
 ?>
 
 
@@ -24,7 +83,7 @@ session_start();
         /* Gaya tambahan untuk halaman info kamar */
         body {
             font-family: Arial, sans-serif;
-            background-color:#E0CBF5 ;
+            background-color: #f0f0f0;
             color: #333;
             margin: 0;
             padding: 0;
@@ -35,7 +94,7 @@ session_start();
             height: auto;
             margin: 0 auto;
             padding: 20px;
-            background-color: #643a89;
+            background-color: #2f1348;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             margin-top: 30px;
@@ -110,7 +169,7 @@ session_start();
         </nav>
     </header>
 
-    <div class="container" style="color: 643a89;" >
+    <div class="container" >
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -118,10 +177,10 @@ session_start();
                 </div>
                 <!-- Tambahkan tiga gambar lainnya di sini -->
                 <div class="swiper-slide">
-                    <img src="kamar2.jpg" alt="Room Image 2">
+                    <img src="<?php echo $foto2; ?>" alt="Room Image 2">
                 </div>
                 <div class="swiper-slide">
-                    <img src="kamar10.jpg" alt="Room Image 3">
+                    <img src="<?php echo $foto3; ?>" alt="Room Image 2">
                 </div>
                 <div class="swiper-slide">
                     <img src="kamar18.jpg" alt="Room Image 4">
@@ -133,7 +192,7 @@ session_start();
         </div>
 
 
-        <h1 class="room-title" style="color:#fff "><?php echo $no_kamar; ?></h1>
+        <h1 class="room-title" style="color: #fff;"><?php echo $no_kamar; ?></h1>
         <p class="room-description" style="color: #fff;"><?php echo $deskripsi; ?></p>
 
         <div class="room-details" style="color: #fff;">
@@ -157,7 +216,7 @@ session_start();
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             margin-top: 30px;
-            background-color:#643A89;
+            background-color:#2f1348;
           
         
         ">

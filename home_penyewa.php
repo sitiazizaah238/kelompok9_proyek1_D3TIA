@@ -11,6 +11,12 @@ include 'db.php';
 
 $username = $_SESSION['username'];
 
+// Periksa apakah notifikasi selamat datang sudah ditampilkan
+$showWelcomeMessage = false;
+if (!isset($_SESSION['welcome_message_shown'])) {
+    $_SESSION['welcome_message_shown'] = true;
+    $showWelcomeMessage = true;
+}
 
 $sql = "SELECT username FROM penyewa WHERE username = ?";
 $stmt = $conn->prepare($sql);
@@ -139,8 +145,9 @@ $conn->close();
                     <input type="text" name="search" placeholder="Search"> -->
                 </form>
                 <ul class="nav-icons">
-                    <a href="#"><i class="fa-regular fa-heart fa-2xl" style="padding-right: 35px; color: #e4c6ff;"></i></a>
+                <a href="logout.php"><i class="fa-solid fa-right-from-bracket fa-2x1" style="padding-right: 35px; color: #e4c6ff;"></i></a>
                     <a href="Register.php"><i class="fa-solid fa-user fa-2xl" style="padding-right: 25px; color: #e4c6ff;"></i></a>
+                    
                 </ul>
             </div>
         </nav>
@@ -148,7 +155,7 @@ $conn->close();
     <div class="container">
         <h2>selamat datang, <?php echo htmlspecialchars($display_username); ?>  </h2>
         <!-- Display other content as needed -->
-        <a href="logout.php">Logout</a>
+        
     </div>
 
 </body>
@@ -198,8 +205,16 @@ $conn->close();
 
 
 <script>
+    fetchRooms();
 
-    
+// Notifikasi selamat datang
+document.addEventListener("DOMContentLoaded", function() {
+    const showWelcomeMessage = <?php echo json_encode($showWelcomeMessage); ?>;
+    if (showWelcomeMessage) {
+        alert("Selamat datang, <?php echo htmlspecialchars($display_username); ?>!");
+    }
+});
+
 // Function to fetch and display rooms
 async function fetchRooms() {
     const response = await fetch('get_rooms.php');

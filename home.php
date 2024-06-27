@@ -20,7 +20,7 @@
                     <input type="text" name="search" placeholder="Search"> -->
                 </form>
                 <ul class="nav-icons">
-                    <a href="#"><i class="fa-regular fa-heart fa-2xl" style="padding-right: 35px; color: #e4c6ff;"></i></a>
+                    
                     <a href="login.php"><i class="fa-solid fa-user fa-2xl" style="padding-right: 25px; color: #e4c6ff;"></i></a>
                 </ul>
             </div>
@@ -54,7 +54,12 @@
         </form>
     </div>
 
-    <script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    alert("Anda telah logout. Terima kasih!");
+    window.location.href = "#"; // Redirect ke halaman login setelah notifikasi
+});
+
  async function fetchRooms() {
     const response = await fetch('get_rooms.php');
     const rooms = await response.json();
@@ -174,7 +179,7 @@
 
         window.onload = fetchRooms;
 
-        
+
     </script>
     
 

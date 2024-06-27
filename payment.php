@@ -50,7 +50,7 @@
 
         .card {
             width: calc(50% - 20px);
-            height: 440px;
+            height: 540px;
             margin-bottom: 20px;
             background-color: #fff;
             border-radius: 8px;
@@ -121,7 +121,7 @@
 <nav>
     <div>
         <div class="logo">
-            <img src="logoo.png" alt="Logo" />
+            <a href="home_penyewa.php"><img src="logoo.png" alt="Logo" /></a>
         </div>
     </div>
 </nav>

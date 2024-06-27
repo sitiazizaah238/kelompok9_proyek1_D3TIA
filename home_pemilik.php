@@ -11,6 +11,12 @@ include 'db.php';
 
 $username = $_SESSION['username'];
 
+// Periksa apakah notifikasi selamat datang sudah ditampilkan
+$showWelcomeMessage = false;
+if (!isset($_SESSION['welcome_message_shown'])) {
+    $_SESSION['welcome_message_shown'] = true;
+    $showWelcomeMessage = true;
+}
 
 $sql = "SELECT username FROM pemilik WHERE username = ?";
 $stmt = $conn->prepare($sql);
@@ -54,7 +60,7 @@ $conn->close();
                     <input type="text" name="search" placeholder="Search"> -->
                 </form>
                 <ul class="nav-icons">
-                    <a href="#"><i class="fa-regular fa-heart fa-2xl" style="padding-right: 35px; color: #e4c6ff;"></i></a>
+                    <a href="logout.php"><i class="fa-solid fa-right-from-bracket fa-2x1" style="padding-right: 35px; color: #e4c6ff;"></i></a>
                     <a href="Register.php"><i class="fa-solid fa-user fa-2xl" style="padding-right: 25px; color: #e4c6ff;"></i></a>
                 </ul>
             </div>
@@ -63,7 +69,7 @@ $conn->close();
     <div class="container">
         <h2>selamat datang, <?php echo htmlspecialchars($display_username); ?>  </h2>
         <!-- Display other content as needed -->
-        <a href="logout.php">Logout</a>
+
     </div>
 
 </body>
@@ -101,6 +107,9 @@ $conn->close();
         <input type="number" id="harga" placeholder="harga" required>
         <input type="text" id="lokasi" placeholder="lokasi" required>
         <input type="text" id="foto" placeholder="tambahkan foto" required>
+        <input type="text" id="foto2" placeholder="tambahkan foto" required>
+        <input type="text" id="foto3" placeholder="tambahkan foto" required>
+        <input type="text" id="foto4" placeholder="tambahkan foto" required>
         <button type="submit">tambahkan kamar</button>
     </form>
 </div>
@@ -124,8 +133,16 @@ $conn->close();
 
 
 <script>
+    fetchRooms();
 
-    
+// Notifikasi selamat datang
+document.addEventListener("DOMContentLoaded", function() {
+    const showWelcomeMessage = <?php echo json_encode($showWelcomeMessage); ?>;
+    if (showWelcomeMessage) {
+        alert("Selamat datang, <?php echo htmlspecialchars($display_username); ?>!");
+    }
+});
+
 // Function to fetch and display rooms
     async function fetchRooms() {
     const response = await fetch('get_rooms.php');
@@ -135,7 +152,7 @@ $conn->close();
     rooms.forEach(room => {
         const roomCard = `
     <div class="card" data-id="${room.id_kamar}">
-        <a href="info_kamar.php?id_kamar=${room.id_kamar}&no_kamar=${encodeURIComponent(room.no_kamar)}&deskripsi=${encodeURIComponent(room.deskripsi)}&harga=${room.harga}&lokasi=${encodeURIComponent(room.lokasi)}&foto=${encodeURIComponent(room.foto)}">
+        
             <img src="${room.foto}" class="card-img-top" alt="">
             <div class="card-body">
                 <h5 class="card-title">${room.no_kamar}</h5>
