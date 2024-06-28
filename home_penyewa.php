@@ -185,12 +185,7 @@ $conn->close();
 
 
 
-<div class="tambah-kamar">
-
-    <form id="add-room-form">
-       
-    </form>
-</div>
+   
 
 <!-- Modal for editing room -->
 <div id="edit-room-container" style="display:none;">
@@ -374,43 +369,7 @@ window.onload = fetchRooms;
     </section>
 
     <!-- Market Section -->
-<section id="market" class="section">
-    <div>
-        <h2>Market</h2>
-        <p>Pasar persewaan kami beragam dan dinamis, menawarkan pilihan bagi pelajar, profesional, dan keluarga.
-        <br>Dengan harga terjangkau dan pilihan sewa yang fleksibel, kami melayani berbagai kebutuhan dan preferensi.<br>Lokasi utama kami memastikan akses mudah ke fasilitas penting seperti kampus, rumah sakit, pusat perbelanjaan,<br> dan transportasi umum, menjadikan properti kami sangat diminati.</br</p>
-        <div class="market-advantages">
-            <div class="advantage">
-                <i class="fas fa-users"></i> <!-- Font Awesome icon for users -->
-                <h3>Diverse Audience</h3>
-                <p>Kami melayani pelajar, profesional, dan keluarga, memastikan komunitas yang beragam di properti sewaan kami.</p>
-            </div>
-            <div class="advantage">
-                <i class="fas fa-dollar-sign"></i> <!-- Font Awesome icon for dollar sign -->
-                <h3>Harga Terjangkau</h3>
-                <p>Harga sewa kami terjangkau, membuat kehidupan berkualitas dapat diakses oleh semua orang.</p>
-            </div>
-            <div class="advantage">
-                <i class="fas fa-map-marked-alt"></i> <!-- Font Awesome icon for map marked -->
-                <h3>Lokasi Utama</h3>
-                <p>Properti kami berlokasi strategis di dekat fasilitas penting, memastikan kenyamanan bagi penyewa kami.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-   <!-- About Section -->
-<section id="about" class="section">
-    <div>
-        <h2>About</h2>
-        <p>Selamat datang di situs web kami yang didedikasikan untuk menyediakan solusi hidup yang nyaman dan terjangkau melalui properti sewaan kami. <br>Kami memahami pentingnya menemukan tempat yang sempurna untuk dijadikan rumah, baik Anda seorang pelajar, profesional, atau keluarga.<br> Misi kami adalah membuat proses penyewaan lancar dan menyenangkan bagi semua penyewa kami.</p>
-        <p>Di situs web kami, Anda dapat menjelajahi berbagai pilihan persewaan, mulai dari kamar single yang nyaman hingga apartemen yang luas, semuanya dilengkapi dengan fasilitas penting untuk memastikan pengalaman hidup yang nyaman. Tim kami berkomitmen untuk memberikan layanan dan dukungan terbaik selama Anda menginap.</p>
-        <p>Bergabunglah dengan komunitas kami hari ini dan temukan kemudahan dan kenyamanan properti sewaan kami!</p>
-    </div>
-</section>
-
-
-    <!-- You can add more sections as needed -->
 
     <footer>
         <div class="container">

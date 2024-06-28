@@ -99,21 +99,117 @@ $conn->close();
 
 
 
-<div class="tambah-kamar">
-    <h2>Tambahkan kamar Blok A</h2>
-    <form id="add-room-form">
-        <input type="text" id="no_kamar" placeholder="nomor kamar" required>
-        <input type="textarea" id="deskripsi" placeholder="deskripsi" required>
-        <input type="number" id="harga" placeholder="harga" required>
-        <input type="text" id="lokasi" placeholder="lokasi" required>
-        <input type="text" id="foto" placeholder="tambahkan foto" required>
-        <input type="text" id="foto2" placeholder="tambahkan foto" required>
-        <input type="text" id="foto3" placeholder="tambahkan foto" required>
-        <input type="text" id="foto4" placeholder="tambahkan foto" required>
-        <button type="submit">tambahkan kamar</button>
-    </form>
-</div>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General styles for the form */
+        .tambah-kamar {
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
+        .tambah-kamar h2 {
+            margin-bottom: 20px;
+        }
+
+        .tambah-kamar form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tambah-kamar input[type="text"],
+        .tambah-kamar input[type="number"],
+        .tambah-kamar textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .tambah-kamar button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #8A2BE2;
+            color: white;
+            cursor: pointer;
+        }
+
+        .tambah-kamar button:hover {
+            background-color: #45a049;
+        }
+
+        /* Styles for the card */
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            margin: 0 0 10px;
+        }
+
+        .card-content p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .card-content .card-buttons {
+            margin-top: 10px;
+        }
+
+        .card-content .card-buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .card-content .card-buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Tambah Kamar Section -->
+    <div class="tambah-kamar">
+        <h2>Tambahkan Data Kamar</h2>
+        <form id="add-room-form">
+            <input type="text" id="no_kamar" placeholder="Nomor kamar" required>
+            <textarea id="deskripsi" placeholder="Deskripsi" required></textarea>
+            <input type="number" id="harga" placeholder="Harga" required>
+            <input type="text" id="lokasi" placeholder="Lokasi" required>
+            <input type="text" id="foto" placeholder="Tambahkan foto" required>
+            <button type="submit">Tambahkan Kamar</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript for form submission and card management if needed
+        document.getElementById('add-room-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Kamar telah ditambahkan!');
+        });
+    </script>
 <!-- Modal for editing room -->
 <div id="edit-room-container" style="display:none;">
     <h2>Edit Room</h2>
@@ -269,15 +365,13 @@ window.onload = fetchRooms;
 
 </script>    
     
-
-
     <section id="features" class="section">
         <div>
             <h2>Features</h2>
             <div class="feature">
                 <div class="feature-icon">
                     <i class="fas fa-home"></i> <!-- Font Awesome icon for home -->
-                </div>z
+                </div>
                 <div class="feature-text">
                     <h3>Desain Modern</h3>
                     <p>Kamar kami menampilkan desain modern dengan tata ruang yang luas, memberikan kenyamanan dan kebijakan.</p>
