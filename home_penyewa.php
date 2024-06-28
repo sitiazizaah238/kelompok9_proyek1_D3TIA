@@ -45,7 +45,7 @@ $conn->close();
     <script src="https://kit.fontawesome.com/4592f70558.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <!-- Youu can add any additional stylesheets or scripts here -->
+   
 <style>
     .swiper-container {
     width: 100%;
@@ -139,7 +139,8 @@ $conn->close();
         <nav>
             <div class="container">
                 <div class="logo">
-                    <img src="logoo.png"/>
+                <img src="LOGO2.png" style="max-width: 210px;
+                    max-height: 150px;"/>
                 </div>
                 <!-- <form class="search-box" action="#" method="GET">
                     <input type="text" name="search" placeholder="Search"> -->

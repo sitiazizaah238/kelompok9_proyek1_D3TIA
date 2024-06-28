@@ -44,7 +44,90 @@ $conn->close();
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/4592f70558.js" crossorigin="anonymous"></script>
     <!-- Youu can add any additional stylesheets or scripts here -->
+<style>
+      .swiper-container {
+    width: 100%;
+    height: 270px;
+}
 
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Section styles */
+.section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.section-header {
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.features-content, .testimonials-content, .contact-content {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature, .testimonial, .contact-info {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.feature i, .testimonial img {
+    margin-bottom: 10px;
+}
+
+.feature h3, .testimonial h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.contact-content form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-content form input, .contact-content form textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-content form button {
+    padding: 10px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-content form button:hover {
+    background-color: #555;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+</style>
 
 </head>
 
@@ -54,7 +137,8 @@ $conn->close();
         <nav>
             <div class="container">
                 <div class="logo">
-                    <img src="logoo.png"/>
+                <img src="LOGO2.png" style="max-width: 210px;
+                    max-height: 120px;"/>
                 </div>
                 <!-- <form class="search-box" action="#" method="GET">
                     <input type="text" name="search" placeholder="Search"> -->
@@ -142,14 +226,6 @@ $conn->close();
         }
 
         /* Styles for the card */
-        .card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
 
         .card-img {
             width: 100%;
