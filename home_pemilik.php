@@ -144,7 +144,8 @@ $conn->close();
                     <input type="text" name="search" placeholder="Search"> -->
                 </form>
                 <ul class="nav-icons">
-                    <a href="logout.php"><i class="fa-solid fa-right-from-bracket fa-2x1" style="padding-right: 35px; color: #e4c6ff;"></i></a>
+                     <a href="lihat_booking.php"><i class="fa-solid   fa-key fa-2xl" style="color:  #e4c6ff; padding-right: 35px;"></i></a>
+                    <a href="logout.php"><i class="fa-solid fa-right-from-bracket fa-2xl" style="padding-right: 35px; color: #e4c6ff;"></i></a>
                     <a href="Register.php"><i class="fa-solid fa-user fa-2xl" style="padding-right: 25px; color: #e4c6ff;"></i></a>
                 </ul>
             </div>

@@ -1,9 +1,15 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sewa Kost</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #f1e1ff;
         }
         .container {
             display: flex;
@@ -12,71 +18,138 @@
             max-width: 1200px;
             margin: 50px auto;
         }
-        .card {
-            width: calc(50% - 20px); /* Lebar kartu 50% dari lebar kontainer dengan jarak 20px di antara */
-            height:440px;
-            margin-bottom: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        nav {
+            background: #2f1348;
+            color: #fff;
+            padding: 20 px 0;
         }
-        .card-body {
-            padding: 20px;
-            margin-top: -50px;
+
+        .nav-links {
+            list-style-type: none;
         }
-        .card-title {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-        .card-text {
-            margin-bottom: 15px;
-        }
-        .list-group-item {
-            border: none;
-        }
-        .tombol {
-            text-align: right;
-        }
-        .tombol .button-text {
-            background-color: #4CAF50;
-            color: white;
-            padding: 8px 16px;
+
+        .nav-links li {
+            display: inline-block;
             text-decoration: none;
-            border-radius: 4px;
+            justify-content: center;
+            align-items: center;
         }
-        .tombol .button-text:hover {
-            background-color: #45a049;
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
         }
-        #rentForm {
-            width: 45%; /* Lebar formulir 45% dari lebar kontainer */
-            height: 400px;
-            padding: 20px;
+
+        .logo {
+            font-size: 34px;
+            font-weight: bold;
+            margin-left: 80px;
+            margin-right: -70px;
+        }
+
+                
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
             background-color: #fff;
-            border-radius: 8px;
+            padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        #rentForm label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        #rentForm input[type="text"], #rentForm input[type="number"], #rentForm select {
+        table {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            border-collapse: collapse;
+            margin: 20px 0;
         }
-        #rentForm input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            float: right;
+        table, th, td {
+            border: 1px solid #ddd;
         }
-        #rentForm input[type="submit"]:hover {
-            background-color: #45a049;
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <div class="logo">
+                <a href="home_penyewa.php"><img src="logoo.png" alt="Logo" /></a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+    <h1>Daftar Kamar Dipesan</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID Booking</th>
+                <th>ID Penyewa</th>
+                <th>No Kamar</th>
+                <th>Username</th>
+                <th>No HP</th>
+                <th>Durasi</th>
+                <th>Total Harga</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row['id_booking'] . "</td>";
+                    echo "<td>" . $row['id_penyewa'] . "</td>";
+                    echo "<td>" . $row['no_kamar'] . "</td>";
+                    echo "<td>" . $row['username'] . "</td>";
+                    echo "<td>" . $row['no_hp'] . "</td>";
+                    echo "<td>" . $row['durasi'] . "</td>";
+                    echo "<td>" . $row['total_harga'] . "</td>";
+                    echo "<td><a href='lihat_detailbooking.php?id=" . $row['id_booking'] . "'>Lihat Detail</a></td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='8'>Tidak ada data pemesanan</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+<?php
+$conn->close();
+?>

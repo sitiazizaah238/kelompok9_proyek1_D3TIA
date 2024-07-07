@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f1e1ff;
+            background-color: #f0f0f0;
         }
         .container {
             display: flex;
@@ -22,7 +22,7 @@
         nav {
             background: #2f1348;
             color: #fff;
-            padding: 20 px 0;
+            padding: 20px 0;
         }
 
         .nav-links {
@@ -141,7 +141,7 @@
             <h5 class="card-title"><?php echo htmlspecialchars($no_kamar); ?></h5>
             <p class="card-text"><?php echo htmlspecialchars($deskripsi); ?></p>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Harga:</strong> Rp.<?php echo htmlspecialchars($harga); ?>/Bulan</li>
+                <li class="list-group-item"><strong>Harga:</strong> Rp.<?php echo htmlspecialchars(number_format($harga, 0, ',', '.')); ?>/Bulan</li>
                 <li class="list-group-item"><strong>Lokasi:</strong> <?php echo htmlspecialchars($lokasi); ?></li>
             </ul>
         </div>

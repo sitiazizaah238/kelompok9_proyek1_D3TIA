@@ -136,7 +136,7 @@ section h2 {
 
 .background .background-tetap {
 width: 50%;
-height: 50%;
+height: 80%;
 }
 
 .text-nav {
@@ -170,9 +170,9 @@ height: 50%;
 /* card katalog */
 .card-container {  /* kontainer katalog */
     display: flex;
-    justify-content: space-between;
+    
     background-color: #ebd5ff;
-    background-position: center;
+    background-position: flex;
     border-radius: 40px;
     margin-left: 20px;
     margin-right: 20px;

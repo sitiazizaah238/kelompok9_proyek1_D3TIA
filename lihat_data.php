@@ -33,7 +33,7 @@
 <tbody>
 <?php
 $no = 1;
-$data = mysqli_query($conn, "SELECT * FROM kamar");
+$data = mysqli_query($conn, "SELECT * FROM booking");
 while ($d = mysqli_fetch_array($data)) {
 ?>
 <tr>

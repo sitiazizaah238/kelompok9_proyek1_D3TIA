@@ -20,6 +20,7 @@ $harga = "";
 $foto = "";
 $foto2 = "";
 $foto3 = "";
+$foto4 = "";
 
 if (isset($_GET['id_penyewa'])) {
     $id_penyewa = $_GET['id_penyewa'];
@@ -59,6 +60,7 @@ if (isset($_GET['id_kamar'])) {
             $foto = $row['foto'];
             $foto2 = $row['foto2'];
             $foto3 = $row['foto3'];
+            $foto3 = $row['foto4'];
         }
     } else {
         echo "Data kamar tidak ditemukan.";
@@ -162,8 +164,8 @@ if (isset($_GET['id_kamar'])) {
                                         font-weight: bold;
                                         margin-left: 80px;
                                         margin-right: -70px;">
-                <div class="">
-                    <img src="logoo.png" alt="Logo" />
+                <div class="logo">
+                <a href="javascript:history.go(-1);"><img src="logoo.png" alt="Logo" /></a>
                 </div>
             </div>
         </nav>
@@ -180,7 +182,10 @@ if (isset($_GET['id_kamar'])) {
                     <img src="<?php echo $foto2; ?>" alt="Room Image 2">
                 </div>
                 <div class="swiper-slide">
-                    <img src="<?php echo $foto3; ?>" alt="Room Image 2">
+                    <img src="<?php echo $foto3; ?>" alt="Room Image 3">
+                </div>
+                <div class="swiper-slide">
+                    <img src="<?php echo $foto4; ?>" alt="Room Image 4">
                 </div>
                 <div class="swiper-slide">
                     <img src="kamar18.jpg" alt="Room Image 4">

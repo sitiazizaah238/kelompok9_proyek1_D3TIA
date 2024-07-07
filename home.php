@@ -123,6 +123,7 @@
         </div> 
     </div>
 
+   
     <div id="room-catalog" class="card-container"></div>
 
     <div class="batas"></div> <!--jarak -->
@@ -275,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="feature">
                 <div class="feature-icon">
                     <i class="fas fa-home"></i> <!-- Font Awesome icon for home -->
-                </div>z
+                </div>
                 <div class="feature-text">
                     <h3>Desain Modern</h3>
                     <p>Kamar kami menampilkan desain modern dengan tata ruang yang luas, memberikan kenyamanan dan kebijakan.</p>

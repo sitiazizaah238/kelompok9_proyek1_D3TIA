@@ -68,7 +68,7 @@ $html = <<<EOD
     </tr>
     <tr>
         <td><strong>Total Harga:</strong></td>
-        <td>Rp $total_harga</td>
+        <td>Rp.$total_harga.000</td>
     </tr>
     <tr>
         <td colspan="2" style="text-align: center;"><strong>Bukti Transfer:</strong></td>

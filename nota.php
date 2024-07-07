@@ -112,7 +112,7 @@ $conn->close();
 <nav>
     <div>
         <div class="logo">
-            <img src="logoo.png" alt="Logo" />
+           <a href="home_penyewa.php"><img src="logoo.png" alt="Logo" /></a> 
         </div>
     </div>
 </nav>

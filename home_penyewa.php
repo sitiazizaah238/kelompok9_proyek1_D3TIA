@@ -146,10 +146,12 @@ $conn->close();
                     <input type="text" name="search" placeholder="Search"> -->
                 </form>
                 <ul class="nav-icons">
-                <a href="logout.php"><i class="fa-solid fa-right-from-bracket fa-2x1" style="padding-right: 35px; color: #e4c6ff;"></i></a>
+                
+                    <a href="logout.php"><i class="fa-solid fa-right-from-bracket fa-2xl" style="padding-right: 35px; color: #e4c6ff;"></i></a>
                     <a href="Register.php"><i class="fa-solid fa-user fa-2xl" style="padding-right: 25px; color: #e4c6ff;"></i></a>
                     
                 </ul>
+                
             </div>
         </nav>
     </header>
@@ -165,7 +167,7 @@ $conn->close();
     <!-- content -->
     <div class="background">
         <div class="background-tetap">
-           <img src="awal.png" alt="gambar1" height= "100" width="100%" > <!-- img untuk menampilkan gambar,src menentukan lokasi/URL dari gambar yg akan ditampilkan -->
+           <img src="awal.png" alt="gambar1" height= "120" width="100vh" > <!-- img untuk menampilkan gambar,src menentukan lokasi/URL dari gambar yg akan ditampilkan -->
             <div class="text1">     <!-- class text agar diatas gambar yg dijadikan backgroun -->
                 <h1 class="text-katalog">Kamar Tersedia</h1>   <!-- judul menggunakan elemen header -->
                     <p></p>
